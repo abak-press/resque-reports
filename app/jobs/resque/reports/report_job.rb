@@ -1,6 +1,6 @@
 # coding: utf-8
 require 'json'
-require 'active_support'
+require 'active_support/inflector'
 
 module Resque
   module Reports
@@ -12,7 +12,7 @@ module Resque
     #    ReportJob.enqueue_to(:my_queue, 'Resque::Reports::MyReport', [1, 2].to_json)
     #
     class ReportJob
-      include Resque::Integration # ??? нужная зависимость?
+      include Resque::Integration
       extend Patches::EnqueueTo
 
       unique
@@ -23,10 +23,6 @@ module Resque
       # @param [String(JSON)] args_json - json array of report arguments
       def self.execute(report_type, args_json)
         report_class = report_type.constantize # избавиться от ActiveSupport
-
-        unless report_class < BaseReport
-          fail "Supports only successors of BaseReport, but got #{report_class}"
-        end
 
         args = JSON.parse(args_json)
         force = args.pop

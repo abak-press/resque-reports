@@ -18,10 +18,10 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency 'resque-integration', '>= 1.1.0'
-  gem.add_dependency 'iron-dsl'
-  gem.add_dependency 'attr_extras'
-  gem.add_dependency 'activesupport' # избавиться от зависимости
+  gem.add_runtime_dependency 'resque-integration', '>= 1.1.0'
+  gem.add_runtime_dependency 'iron-dsl'
+  gem.add_runtime_dependency 'attr_extras'
+  gem.add_runtime_dependency 'activesupport'
 
   gem.add_development_dependency 'bundler', '~> 1.3'
   gem.add_development_dependency 'pry'
