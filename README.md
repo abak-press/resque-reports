@@ -2,6 +2,8 @@
 
 Make your custom reports to CSV in background using Resque with simple DSL.
 
+NOTE: by default report job uses ```:reports``` Resque queue
+
 ## Instalation
 
 Add this line to your application's Gemfile:
@@ -21,7 +23,7 @@ And then execute:
 ``` ruby
 class CsvUserReport < Ruby::Reports::CsvReport
   config(
-    queue: :csv_reports,
+    queue: :csv_reports, # default queue is :reports
     source: :select_data,
     directory: Rails.root.join('public/reports')
   )

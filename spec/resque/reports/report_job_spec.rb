@@ -8,7 +8,7 @@ module Reports
       queue: :csv_reports,
       source: :select_data,
       encoding: 'utf-8',
-      directory: File.join(Dir.home, '.resque-reports')
+      directory: File.join(Dir.tmpdir, '.resque-reports')
     )
 
     table do |element|
