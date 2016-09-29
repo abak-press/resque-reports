@@ -54,7 +54,12 @@ class MyReport < MyTypeReport
   end
 
   class Query
-    pattr_initialize :report
+    attr_reader :report
+
+    def initialize(report)
+      @report = report
+    end
+
     def select_data
       [{one: 'one', two: 'one'}, {one: report.main_param, two: report.main_param}]
     end
