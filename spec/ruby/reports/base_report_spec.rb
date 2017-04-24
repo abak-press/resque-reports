@@ -72,10 +72,8 @@ describe 'Resque::Reports::BaseReport successor' do
     context 'when report is building twice' do
       subject { MyReport.new('#bg_build test') }
 
-      before { allow(job_class).to receive(:enqueue_to).and_return('job_id') }
-
       it do
-        expect(job_class).to receive(:enqueue_to).twice
+        expect(job_class).to receive(:enqueue_to).once.and_call_original
       end
 
       after do
@@ -85,8 +83,6 @@ describe 'Resque::Reports::BaseReport successor' do
 
     context 'when report is building' do
       subject { MyReport.new('#bg_build test') }
-
-      before { allow(job_class).to receive(:enqueue_to).and_return('job_id') }
 
       it { expect(job_class).to receive(:enqueue_to) }
 
