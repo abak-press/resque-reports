@@ -13,7 +13,6 @@ module Resque
     #
     class ReportJob
       include Resque::Integration
-      extend Patches::EnqueueTo
 
       unique
 

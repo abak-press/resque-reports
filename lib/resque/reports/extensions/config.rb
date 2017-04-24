@@ -4,16 +4,13 @@ module Resque
       module Config
         DEFAULT_QUEUE = :reports
 
-        def queue
-          @queue ||= DEFAULT_QUEUE
+        def initialize(values)
+          @queue = values.delete(:queue) if values.is_a?(Hash)
+          super
         end
 
-        def self.included(base)
-          base.class_eval do
-            def self.config_attributes
-              super + [:queue]
-            end
-          end
+        def queue
+          @queue ||= DEFAULT_QUEUE
         end
       end
     end
