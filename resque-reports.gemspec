@@ -28,11 +28,9 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'bundler', '>= 1.7'
   gem.add_development_dependency 'pry'
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'mock_redis'
   gem.add_development_dependency 'rspec', '>= 2.14.0'
   gem.add_development_dependency 'simplecov'
   gem.add_development_dependency 'timecop', '~> 0.7.1'
   gem.add_development_dependency 'appraisal'
-  gem.add_development_dependency 'test-unit'
   gem.add_development_dependency 'pry-byebug'
 end
