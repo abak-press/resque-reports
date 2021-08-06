@@ -10,8 +10,7 @@ require 'timecop'
 
 require 'resque-reports'
 
-require 'mock_redis'
-Resque.redis = MockRedis.new
+Resque.redis = Redis.new(host: ENV['TEST_REDIS_HOST'])
 
 RSpec.configure do |config|
   config.before do
